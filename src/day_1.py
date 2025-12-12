@@ -12,7 +12,7 @@ class Day1:
         Get all of the lines in the text file.
         
         :param filepath: filepath for the data
-        :return: tuple of direction and tick counts
+        :return: list of tuple with direction and tick counts
         '''
         lines: list[tuple[str,int]] = []
         with open(filepath, "r") as file:
