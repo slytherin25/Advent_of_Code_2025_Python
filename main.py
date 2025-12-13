@@ -2,6 +2,7 @@ from typing import Any
 
 from src.day_1 import Day1
 from src.day_2 import Day2
+from src.day_3 import Day3
 
 
 def printAnswers(dayIndex: int, answers: list[Any]):
@@ -19,7 +20,11 @@ def main():
 
     # Day 2 answers.
     day2: Day2 = Day2()
-    printAnswers(1, [day2.part1Answer(), day2.part2Answer()])
+    printAnswers(2, [day2.part1Answer(), day2.part2Answer()])
+
+    # Day 3 answers.
+    day3: Day3 = Day3()
+    printAnswers(3, [day3.part1Answer(), day3.part2Answer()])
 
 
 #----------------------------------------------------------------------
