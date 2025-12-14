@@ -38,10 +38,50 @@ class Day3:
         return pairings
     
     #----------------------------------------------------------------------
+    def findLargestNumberInArray(self, numberArray: str) -> str:
+        largestFound: int = -1
+        for number in numberArray:
+            if int(number) > largestFound:
+                largestFound = int(number)
+
+        return str(largestFound)
+
+    #----------------------------------------------------------------------
+    def findIndices(self, number: str, numberString: str) -> list[int]:
+        indices: list[int] = []
+        for index in range(len(numberString)):
+            if numberString[index] == number:
+                indices.append(index)
+
+        return indices
+
+    #----------------------------------------------------------------------
     def largest12DigitValue(self, numberString: str) -> str:
 
-        return 0
-    
+        answer: str = ""
+
+        answerLength: int = 12
+
+        aIndex: int = 0
+        bIndex: int = len(numberString) - answerLength
+
+        while bIndex < len(numberString):
+
+            largestNumber: str = self.findLargestNumberInArray(numberString[aIndex:(bIndex + 1)])
+            largestNumberIndices: list[int] = self.findIndices(largestNumber, numberString)
+
+            for largestNumberIndex in largestNumberIndices:
+                if aIndex <= largestNumberIndex <= bIndex:
+                    aIndex = largestNumberIndex
+                    break
+            
+            answer = answer + numberString[aIndex]
+
+            aIndex = aIndex + 1
+            bIndex = bIndex + 1
+
+        return answer
+
     #----------------------------------------------------------------------
     def part1Answer(self):
 
@@ -64,7 +104,6 @@ class Day3:
     def part2Answer(self):
 
         lines: list[str] = self.readLines("data/day_3_data.txt")
-        lines=["1234"]
 
         totalSum: int = 0
         for line in lines:
